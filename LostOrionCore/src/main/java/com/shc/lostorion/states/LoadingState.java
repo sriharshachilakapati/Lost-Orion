@@ -1,5 +1,6 @@
 package com.shc.lostorion.states;
 
+import com.shc.lostorion.LostOrion;
 import com.shc.lostorion.Resources;
 import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.ResourceLoader;
@@ -72,6 +73,8 @@ public class LoadingState extends GameState
             particleAnim.addFrame(particles.getCell(0, 0), 100, TimeUtils.Unit.MILLIS);
             particleAnim.addFrame(particles.getCell(0, 1), 100, TimeUtils.Unit.MILLIS);
             particleAnim.addFrame(particles.getCell(0, 2), 100, TimeUtils.Unit.MILLIS);
+
+            LostOrion.INSTANCE.setGameState(new PlayState());
         }
     }
 
@@ -83,22 +86,23 @@ public class LoadingState extends GameState
         if (renderer != null)
         {
             Resources.Programs.DYNAMIC.use();
+            Resources.Programs.DYNAMIC.applyToRenderer(renderer);
 
-            final float percentage = MathUtils.convertRange(resourceLoader.getPercentage(), 0, 100, -0.2f, 0.8f);
+            final float percentage = MathUtils.convertRange(resourceLoader.getPercentage(), 0, 100, -0.8f, 0.8f);
 
-            renderer.begin(Primitive.TRIANGLE_FAN);
+            renderer.begin(Primitive.TRIANGLE_STRIP);
             {
-                renderer.vertex(-0.2f, -0.7f);
-                renderer.color(Color.RED);
+                renderer.vertex(-0.8f, -0.7f);
+                renderer.color(Color.ORANGE);
 
                 renderer.vertex(percentage, -0.7f);
-                renderer.color(Color.ORANGE);
+                renderer.color(Color.RED);
+
+                renderer.vertex(-0.8f, -0.8f);
+                renderer.color(Color.RED);
 
                 renderer.vertex(percentage, -0.8f);
                 renderer.color(Color.ORANGE);
-
-                renderer.vertex(-0.2f, -0.8f);
-                renderer.color(Color.RED);
             }
             renderer.end();
         }

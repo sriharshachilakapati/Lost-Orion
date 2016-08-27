@@ -4,8 +4,8 @@ import com.shc.silenceengine.graphics.Animation;
 import com.shc.silenceengine.graphics.DynamicRenderer;
 import com.shc.silenceengine.graphics.SpriteRenderer;
 import com.shc.silenceengine.graphics.fonts.BitmapFontRenderer;
-import com.shc.silenceengine.graphics.opengl.Program;
 import com.shc.silenceengine.graphics.opengl.Texture;
+import com.shc.silenceengine.graphics.programs.DynamicProgram;
 
 /**
  * @author Sri Harsha Chilakapati
@@ -26,7 +26,7 @@ public final class Resources
 
     public final static class Programs
     {
-        public static Program DYNAMIC;
+        public static DynamicProgram DYNAMIC;
     }
 
     public final static class Renderers

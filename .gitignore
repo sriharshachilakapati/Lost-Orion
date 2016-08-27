@@ -1,0 +1,10 @@
+.gradle/
+.idea/
+build/
+classes/
+captures/
+LostOrionAndroid/build/
+LostOrionCore/build/
+LostOrionDesktop/build/
+LostOrionHtml5/build/
+LostOrionHtml5/war/

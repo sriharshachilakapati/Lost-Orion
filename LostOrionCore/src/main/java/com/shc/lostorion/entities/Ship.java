@@ -1,10 +1,10 @@
 package com.shc.lostorion.entities;
 
+import com.shc.lostorion.BatchComponent;
 import com.shc.lostorion.Resources;
 import com.shc.silenceengine.graphics.Sprite;
 import com.shc.silenceengine.input.Keyboard;
 import com.shc.silenceengine.math.Vector2;
-import com.shc.silenceengine.scene.components.SpriteComponent;
 import com.shc.silenceengine.scene.entity.Entity2D;
 
 import static com.shc.silenceengine.input.Keyboard.*;
@@ -21,7 +21,7 @@ public class Ship extends Entity2D
         position.set(x, y);
         speed.set(0, 0);
 
-        addComponent(new SpriteComponent(new Sprite(Resources.Textures.SHIP), Resources.Renderers.SPRITE));
+        addComponent(new BatchComponent(new Sprite(Resources.Textures.SHIP), 1));
     }
 
     @Override

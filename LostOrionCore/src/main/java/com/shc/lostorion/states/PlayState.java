@@ -1,12 +1,12 @@
 package com.shc.lostorion.states;
 
 import com.shc.lostorion.Resources;
+import com.shc.lostorion.SpriteBatch;
 import com.shc.silenceengine.collision.broadphase.DynamicTree2D;
 import com.shc.silenceengine.collision.colliders.SceneCollider2D;
 import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.IGraphicsDevice;
-import com.shc.silenceengine.graphics.SpriteRenderer;
 import com.shc.silenceengine.graphics.cameras.OrthoCam;
 import com.shc.silenceengine.graphics.fonts.BitmapFont;
 import com.shc.silenceengine.graphics.fonts.BitmapFontRenderer;
@@ -17,6 +17,8 @@ import com.shc.silenceengine.scene.Scene2D;
  */
 public class PlayState extends GameState
 {
+    public static SpriteBatch SPRITE_BATCH = new SpriteBatch();
+
     private OrthoCam camera = new OrthoCam(1280, 720);
 
     private Scene2D         scene;
@@ -48,11 +50,9 @@ public class PlayState extends GameState
     public void render(float delta)
     {
         camera.apply();
-
-        SpriteRenderer spriteRenderer = Resources.Renderers.SPRITE;
-        spriteRenderer.begin();
         scene.render(delta);
-        spriteRenderer.end();
+
+        SPRITE_BATCH.renderToScreen();
 
         BitmapFontRenderer fontRenderer = Resources.Renderers.FONT;
         BitmapFont font = Resources.Fonts.ROBOTO;

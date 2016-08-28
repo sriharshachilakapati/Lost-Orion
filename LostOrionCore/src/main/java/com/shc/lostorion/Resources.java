@@ -1,5 +1,6 @@
 package com.shc.lostorion;
 
+import com.shc.silenceengine.collision.CollisionTag;
 import com.shc.silenceengine.graphics.Animation;
 import com.shc.silenceengine.graphics.DynamicRenderer;
 import com.shc.silenceengine.graphics.SpriteRenderer;
@@ -43,5 +44,12 @@ public final class Resources
         public static DynamicRenderer    DYNAMIC;
         public static BitmapFontRenderer FONT;
         public static SpriteRenderer     SPRITE;
+    }
+
+    public final static class CollisionTags
+    {
+        public static final CollisionTag SHIP   = new CollisionTag();
+        public static final CollisionTag BULLET = new CollisionTag();
+        public static final CollisionTag BLOCK  = new CollisionTag();
     }
 }

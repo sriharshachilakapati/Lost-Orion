@@ -13,6 +13,12 @@ public class LostOrion extends Game
 {
     public static LostOrion INSTANCE;
 
+    static
+    {
+        // Use development mode to catch GL and AL errors all the time
+        DEVELOPMENT = true;
+    }
+
     @Override
     public void init()
     {

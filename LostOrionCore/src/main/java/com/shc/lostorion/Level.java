@@ -1,5 +1,7 @@
 package com.shc.lostorion;
 
+import com.shc.lostorion.entities.Block;
+import com.shc.lostorion.entities.Floor;
 import com.shc.lostorion.entities.Ship;
 import com.shc.silenceengine.core.IResource;
 import com.shc.silenceengine.core.ResourceLoader;
@@ -21,8 +23,8 @@ public class Level implements IResource
 
     public void create(Scene2D scene)
     {
-        float x = 0, y = 0;
         final float tileSize = 96;
+        float x = tileSize / 2, y = tileSize / 2;
 
         for (char ch : levelText.toCharArray())
         {
@@ -32,12 +34,21 @@ public class Level implements IResource
             if (ch == '\n')
             {
                 y += tileSize;
-                x = 0;
+                x = tileSize / 2;
                 continue;
             }
 
-            if (ch == 'S')
+            if (ch == ' ')
+                scene.entities.add(new Floor(x, y));
+
+            else if (ch == 'S')
+            {
                 scene.entities.add(new Ship(x, y));
+                scene.entities.add(new Floor(x, y));
+            }
+
+            else if (ch == 'B')
+                scene.entities.add(new Block(x, y));
 
             x += tileSize;
         }

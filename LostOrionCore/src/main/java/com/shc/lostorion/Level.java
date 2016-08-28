@@ -26,6 +26,19 @@ public class Level implements IResource
         final float tileSize = 96;
         float x = tileSize / 2, y = tileSize / 2;
 
+        float mapWidth = 0;
+        float mapHeight;
+
+        String[] lines = levelText.split("\r?\n");
+        mapHeight = lines.length;
+
+        for (String line : lines)
+            mapWidth = Math.max(mapWidth, line.length());
+
+        for (int r = 0; r < mapWidth; r++)
+            for (int c = 0; c < mapHeight; c++)
+                scene.entities.add(new Floor(r * tileSize + x, c * tileSize + y));
+
         for (char ch : levelText.toCharArray())
         {
             if (ch == '\r')
@@ -38,14 +51,8 @@ public class Level implements IResource
                 continue;
             }
 
-            if (ch == ' ')
-                scene.entities.add(new Floor(x, y));
-
             else if (ch == 'S')
-            {
                 scene.entities.add(new Ship(x, y));
-                scene.entities.add(new Floor(x, y));
-            }
 
             else if (ch == 'B')
                 scene.entities.add(new Block(x, y));

@@ -27,6 +27,7 @@ public class LoadingState extends GameState
     private long bulletId;
     private long shipId;
     private long particlesId;
+    private long tilesId;
 
     @Override
     public void onEnter()
@@ -36,6 +37,7 @@ public class LoadingState extends GameState
         bulletId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/bullet.png"));
         shipId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/ship.png"));
         particlesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/particles-sheet.png"));
+        tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
 
         DynamicProgram.create(dynamicProgram ->
         {
@@ -66,13 +68,18 @@ public class LoadingState extends GameState
             Resources.Textures.BULLET = resourceLoader.get(bulletId);
             Resources.Textures.SHIP = resourceLoader.get(shipId);
             Resources.Textures.PARTICLES_SHEET = resourceLoader.get(particlesId);
+            Resources.Textures.TILES_SHEET = resourceLoader.get(tilesId);
 
-            SpriteSheet particles = new SpriteSheet(Resources.Textures.PARTICLES_SHEET, 95, 184);
+            SpriteSheet particles = new SpriteSheet(Resources.Textures.PARTICLES_SHEET, 29, 57);
 
             Animation particleAnim = Resources.Animations.PARTICLES = new Animation();
             particleAnim.addFrame(particles.getCell(0, 0), 100, TimeUtils.Unit.MILLIS);
             particleAnim.addFrame(particles.getCell(0, 1), 100, TimeUtils.Unit.MILLIS);
             particleAnim.addFrame(particles.getCell(0, 2), 100, TimeUtils.Unit.MILLIS);
+
+            SpriteSheet tiles = new SpriteSheet(Resources.Textures.TILES_SHEET, 96, 96);
+            Resources.Textures.TILE_FREE = tiles.getCell(0, 0);
+            Resources.Textures.TILE_BLOCKED = tiles.getCell(0, 1);
 
             LostOrion.INSTANCE.setGameState(new PlayState());
         }

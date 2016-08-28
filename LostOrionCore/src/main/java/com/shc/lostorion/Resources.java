@@ -17,6 +17,9 @@ public final class Resources
         public static Texture SHIP;
         public static Texture BULLET;
         public static Texture PARTICLES_SHEET;
+        public static Texture TILES_SHEET;
+        public static Texture TILE_FREE;
+        public static Texture TILE_BLOCKED;
     }
 
     public final static class Animations

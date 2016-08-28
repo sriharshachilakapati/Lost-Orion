@@ -9,6 +9,7 @@ import com.shc.silenceengine.graphics.Color;
 import com.shc.silenceengine.graphics.DynamicRenderer;
 import com.shc.silenceengine.graphics.SpriteRenderer;
 import com.shc.silenceengine.graphics.SpriteSheet;
+import com.shc.silenceengine.graphics.fonts.BitmapFont;
 import com.shc.silenceengine.graphics.fonts.BitmapFontRenderer;
 import com.shc.silenceengine.graphics.opengl.Primitive;
 import com.shc.silenceengine.graphics.opengl.Texture;
@@ -29,6 +30,8 @@ public class LoadingState extends GameState
     private long particlesId;
     private long tilesId;
 
+    private long robotoId;
+
     @Override
     public void onEnter()
     {
@@ -38,6 +41,7 @@ public class LoadingState extends GameState
         shipId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/ship.png"));
         particlesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/particles-sheet.png"));
         tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
+        robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
 
         DynamicProgram.create(dynamicProgram ->
         {
@@ -69,6 +73,8 @@ public class LoadingState extends GameState
             Resources.Textures.SHIP = resourceLoader.get(shipId);
             Resources.Textures.PARTICLES_SHEET = resourceLoader.get(particlesId);
             Resources.Textures.TILES_SHEET = resourceLoader.get(tilesId);
+
+            Resources.Fonts.ROBOTO = resourceLoader.get(robotoId);
 
             SpriteSheet particles = new SpriteSheet(Resources.Textures.PARTICLES_SHEET, 29, 57);
 

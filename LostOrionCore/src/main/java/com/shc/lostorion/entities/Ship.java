@@ -22,6 +22,16 @@ public class Ship extends Entity2D
         speed.set(0, 0);
 
         addComponent(new BatchComponent(new Sprite(Resources.Textures.SHIP), 1));
+
+        Entity2D particles = new Entity2D();
+        particles.position.y = 70;
+
+        Sprite particleAnim = new Sprite(Resources.Animations.PARTICLES);
+        particleAnim.setEndCallback(particleAnim::start);
+        particleAnim.start();
+
+        particles.addComponent(new BatchComponent(particleAnim, 0));
+        addChild(particles);
     }
 
     @Override

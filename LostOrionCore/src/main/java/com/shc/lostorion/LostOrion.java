@@ -6,12 +6,14 @@ import com.shc.silenceengine.core.SilenceEngine;
 import com.shc.silenceengine.graphics.opengl.GLContext;
 import com.shc.silenceengine.input.Keyboard;
 import com.shc.silenceengine.io.FilePath;
+import com.shc.silenceengine.logging.Logger;
 
 import static com.shc.silenceengine.graphics.IGraphicsDevice.Constants.*;
 
 public class LostOrion extends Game
 {
     public static LostOrion INSTANCE;
+    public static Logger    LOGGER;
 
     static
     {
@@ -23,6 +25,8 @@ public class LostOrion extends Game
     public void init()
     {
         INSTANCE = this;
+
+        LOGGER = SilenceEngine.log.getLogger("LostOrion");
 
         SilenceEngine.display.setTitle("LostOrion: SilenceEngine v1.0.1");
         SilenceEngine.display.setSize(1280, 720);

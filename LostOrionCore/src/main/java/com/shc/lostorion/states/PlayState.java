@@ -1,7 +1,6 @@
 package com.shc.lostorion.states;
 
 import com.shc.lostorion.Resources;
-import com.shc.lostorion.entities.Ship;
 import com.shc.silenceengine.collision.broadphase.DynamicTree2D;
 import com.shc.silenceengine.collision.colliders.SceneCollider2D;
 import com.shc.silenceengine.core.GameState;
@@ -27,12 +26,13 @@ public class PlayState extends GameState
     public void onEnter()
     {
         scene = new Scene2D();
-        scene.entities.add(new Ship(100, 100));
 
         collider = new SceneCollider2D(new DynamicTree2D());
         collider.setScene(scene);
 
         collider.register(Resources.CollisionTags.SHIP, Resources.CollisionTags.BLOCK);
+
+        Resources.Levels.TEST.create(scene);
     }
 
     @Override

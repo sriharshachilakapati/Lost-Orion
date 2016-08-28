@@ -46,6 +46,11 @@ public final class Resources
         public static SpriteRenderer     SPRITE;
     }
 
+    public final static class Levels
+    {
+        public static Level TEST;
+    }
+
     public final static class CollisionTags
     {
         public static final CollisionTag SHIP   = new CollisionTag();

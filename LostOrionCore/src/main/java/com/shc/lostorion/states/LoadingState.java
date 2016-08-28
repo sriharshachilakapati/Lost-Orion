@@ -1,5 +1,6 @@
 package com.shc.lostorion.states;
 
+import com.shc.lostorion.Level;
 import com.shc.lostorion.LostOrion;
 import com.shc.lostorion.Resources;
 import com.shc.silenceengine.core.GameState;
@@ -30,11 +31,16 @@ public class LoadingState extends GameState
     private long particlesId;
     private long tilesId;
 
+    private long levelTestId;
+
     private long robotoId;
 
     @Override
     public void onEnter()
     {
+        // Helper to load the levels using the ResourceLoader
+        ResourceLoader.setHelper(Level.class, Level::loadHelper);
+
         resourceLoader = new ResourceLoader();
 
         bulletId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/bullet.png"));
@@ -42,6 +48,7 @@ public class LoadingState extends GameState
         particlesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/particles-sheet.png"));
         tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
+        levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
 
         DynamicProgram.create(dynamicProgram ->
         {
@@ -86,6 +93,8 @@ public class LoadingState extends GameState
             SpriteSheet tiles = new SpriteSheet(Resources.Textures.TILES_SHEET, 96, 96);
             Resources.Textures.TILE_FREE = tiles.getCell(0, 0);
             Resources.Textures.TILE_BLOCKED = tiles.getCell(0, 1);
+
+            Resources.Levels.TEST = resourceLoader.get(levelTestId);
 
             LostOrion.INSTANCE.setGameState(new PlayState());
         }

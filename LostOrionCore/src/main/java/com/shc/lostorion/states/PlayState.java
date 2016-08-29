@@ -26,15 +26,13 @@ public class PlayState extends GameState
     public static Scene2D         SCENE;
     private       SceneCollider2D collider;
 
-    public static int SCORE;
-    public static int BOXES;
+    public static int SCORE = 0;
+    public static int BOXES = 0;
 
     @Override
     public void onEnter()
     {
         SCENE = new Scene2D();
-        SCORE = 0;
-        BOXES = 0;
 
         collider = new SceneCollider2D(new DynamicTree2D());
         collider.setScene(SCENE);

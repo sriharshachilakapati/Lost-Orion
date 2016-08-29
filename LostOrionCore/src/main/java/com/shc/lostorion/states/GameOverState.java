@@ -81,4 +81,11 @@ public class GameOverState extends GameState
         }
         dynamicRenderer.end();
     }
+
+    @Override
+    public void onLeave()
+    {
+        PlayState.SCORE = 0;
+        PlayState.BOXES = 0;
+    }
 }

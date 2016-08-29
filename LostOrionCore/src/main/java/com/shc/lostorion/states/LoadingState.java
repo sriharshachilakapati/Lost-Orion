@@ -3,6 +3,7 @@ package com.shc.lostorion.states;
 import com.shc.lostorion.Level;
 import com.shc.lostorion.LostOrion;
 import com.shc.lostorion.Resources;
+import com.shc.silenceengine.audio.Sound;
 import com.shc.silenceengine.core.GameState;
 import com.shc.silenceengine.core.ResourceLoader;
 import com.shc.silenceengine.graphics.Animation;
@@ -35,6 +36,9 @@ public class LoadingState extends GameState
 
     private long robotoId;
 
+    private long titleId;
+    private long weirdId;
+
     @Override
     public void onEnter()
     {
@@ -49,6 +53,8 @@ public class LoadingState extends GameState
         tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
         levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
+        titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
+        weirdId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/keeps_getting_weirder.ogg"));
 
         DynamicProgram.create(dynamicProgram ->
         {
@@ -95,6 +101,11 @@ public class LoadingState extends GameState
             Resources.Textures.TILE_BLOCKED = tiles.getCell(0, 1);
 
             Resources.Levels.TEST = resourceLoader.get(levelTestId);
+
+            Resources.Sounds.TITLE = resourceLoader.get(titleId);
+            Resources.Sounds.WEIRD = resourceLoader.get(weirdId);
+
+            Resources.Sounds.WEIRD.play(true);
 
             LostOrion.INSTANCE.setGameState(new PlayState());
         }

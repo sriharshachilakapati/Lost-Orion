@@ -1,5 +1,6 @@
 package com.shc.lostorion;
 
+import com.shc.silenceengine.audio.Sound;
 import com.shc.silenceengine.collision.CollisionTag;
 import com.shc.silenceengine.graphics.Animation;
 import com.shc.silenceengine.graphics.DynamicRenderer;
@@ -37,6 +38,12 @@ public final class Resources
     public final static class Programs
     {
         public static DynamicProgram DYNAMIC;
+    }
+
+    public final static class Sounds
+    {
+        public static Sound TITLE;
+        public static Sound WEIRD;
     }
 
     public final static class Renderers

@@ -40,6 +40,8 @@ public class LoadingState extends GameState
 
     private long titleId;
     private long weirdId;
+    private long laserId;
+    private long explosionSndId;
 
     @Override
     public void onEnter()
@@ -59,6 +61,8 @@ public class LoadingState extends GameState
         levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
         titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
         weirdId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/keeps_getting_weirder.ogg"));
+        laserId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/effects/laser_pew.ogg"));
+        explosionSndId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/effects/explode_long.ogg"));
 
         DynamicProgram.create(dynamicProgram ->
         {
@@ -124,6 +128,8 @@ public class LoadingState extends GameState
 
             Resources.Sounds.TITLE = resourceLoader.get(titleId);
             Resources.Sounds.WEIRD = resourceLoader.get(weirdId);
+            Resources.Sounds.LASER = resourceLoader.get(laserId);
+            Resources.Sounds.EXPLOSION = resourceLoader.get(explosionSndId);
 
             Resources.Sounds.WEIRD.play(true);
 

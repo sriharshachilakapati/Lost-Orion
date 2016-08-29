@@ -48,6 +48,8 @@ public final class Resources
     {
         public static Sound TITLE;
         public static Sound WEIRD;
+        public static Sound LASER;
+        public static Sound EXPLOSION;
     }
 
     public final static class Renderers

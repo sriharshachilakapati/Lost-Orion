@@ -17,6 +17,7 @@ public final class Resources
 {
     public final static class Textures
     {
+        public static Texture LOGO;
         public static Texture EXPLOSION_SHEET;
         public static Texture SHIP;
         public static Texture BULLET;

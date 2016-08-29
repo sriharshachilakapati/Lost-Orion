@@ -33,6 +33,7 @@ public class LoadingState extends GameState
     private long tilesId;
     private long explosionId;
     private long rollerId;
+    private long logoId;
 
     private long levelTestId;
 
@@ -57,6 +58,7 @@ public class LoadingState extends GameState
         tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
         explosionId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/explosion-sheet.png"));
         rollerId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/rollers-sheet.png"));
+        logoId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/logo.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
         levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
         titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
@@ -96,6 +98,7 @@ public class LoadingState extends GameState
             Resources.Textures.TILES_SHEET = resourceLoader.get(tilesId);
             Resources.Textures.EXPLOSION_SHEET = resourceLoader.get(explosionId);
             Resources.Textures.ROLLERS_SHEET = resourceLoader.get(rollerId);
+            Resources.Textures.LOGO = resourceLoader.get(logoId);
 
             Resources.Fonts.ROBOTO = resourceLoader.get(robotoId);
 
@@ -131,9 +134,9 @@ public class LoadingState extends GameState
             Resources.Sounds.LASER = resourceLoader.get(laserId);
             Resources.Sounds.EXPLOSION = resourceLoader.get(explosionSndId);
 
-            Resources.Sounds.WEIRD.play(true);
+            Resources.Sounds.TITLE.play(true);
 
-            LostOrion.INSTANCE.setGameState(new PlayState());
+            LostOrion.INSTANCE.setGameState(new IntroState());
         }
     }
 

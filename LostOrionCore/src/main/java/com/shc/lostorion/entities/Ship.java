@@ -85,6 +85,9 @@ public class Ship extends Entity2D
         if (Keyboard.isKeyDown(KEY_UP))
             speed.y = -150;
 
+        if (Keyboard.isKeyDown(KEY_DOWN))
+            speed.y = 150;
+
         Vector2 temp = Vector2.REUSABLE_STACK.pop();
         position.add(temp.set(speed).rotate(rotation).scale(deltaTime));
         Vector2.REUSABLE_STACK.push(temp);

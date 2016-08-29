@@ -36,6 +36,8 @@ public class Bullet extends Entity2D
         addComponent(new BatchComponent(new Sprite(Resources.Textures.BULLET), 0));
         addComponent(new CollisionComponent2D(Resources.CollisionTags.BULLET, new Rectangle(width, height),
                 this::onCollision));
+
+        Resources.Sounds.LASER.play();
     }
 
     private void onCollision(Entity2D self, CollisionComponent2D other)
@@ -46,6 +48,7 @@ public class Bullet extends Entity2D
         if (other.entity instanceof Roller)
         {
             destroy();
+            PlayState.SCORE += 5;
             PlayState.SCENE.entities.remove(other.entity);
         }
     }
@@ -69,5 +72,6 @@ public class Bullet extends Entity2D
         dead = true;
         PlayState.SCENE.entities.remove(this);
         PlayState.SCENE.entities.add(new Explosion(position.x, position.y));
+        Resources.Sounds.EXPLOSION.play();
     }
 }

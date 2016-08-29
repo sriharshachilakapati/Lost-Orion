@@ -1,5 +1,6 @@
 package com.shc.lostorion;
 
+import com.shc.lostorion.entities.BlackBox;
 import com.shc.lostorion.entities.Block;
 import com.shc.lostorion.entities.Floor;
 import com.shc.lostorion.entities.Roller;
@@ -31,19 +32,6 @@ public class Level implements IResource
         final float tileSize = 96;
         float x = tileSize / 2, y = tileSize / 2;
 
-        float mapWidth = 0;
-        float mapHeight;
-
-        String[] lines = levelText.split("\r?\n");
-        mapHeight = lines.length;
-
-        for (String line : lines)
-            mapWidth = Math.max(mapWidth, line.length());
-
-        for (int r = 0; r < mapWidth; r++)
-            for (int c = 0; c < mapHeight; c++)
-                scene.entities.add(new Floor(r * tileSize + x, c * tileSize + y));
-
         for (char ch : levelText.toCharArray())
         {
             if (ch == '\r')
@@ -64,6 +52,12 @@ public class Level implements IResource
 
             else if (ch == 'R')
                 scene.entities.add(new Roller(x, y));
+
+            else if (ch == 'E')
+                scene.entities.add(new BlackBox(x, y));
+
+            if (ch != 'B' && ch != 'N')
+                scene.entities.add(new Floor(x, y));
 
             x += tileSize;
         }

@@ -48,6 +48,7 @@ public class Bullet extends Entity2D
         if (other.entity instanceof Roller)
         {
             destroy();
+            PlayState.SCORE += 5;
             PlayState.SCENE.entities.remove(other.entity);
         }
     }

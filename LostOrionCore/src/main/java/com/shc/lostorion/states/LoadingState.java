@@ -34,6 +34,7 @@ public class LoadingState extends GameState
     private long explosionId;
     private long rollerId;
     private long logoId;
+    private long blackBoxId;
 
     private long levelTestId;
 
@@ -59,6 +60,7 @@ public class LoadingState extends GameState
         explosionId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/explosion-sheet.png"));
         rollerId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/rollers-sheet.png"));
         logoId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/logo.png"));
+        blackBoxId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/black-box.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
         levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
         titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
@@ -99,6 +101,7 @@ public class LoadingState extends GameState
             Resources.Textures.EXPLOSION_SHEET = resourceLoader.get(explosionId);
             Resources.Textures.ROLLERS_SHEET = resourceLoader.get(rollerId);
             Resources.Textures.LOGO = resourceLoader.get(logoId);
+            Resources.Textures.BLACK_BOX = resourceLoader.get(blackBoxId);
 
             Resources.Fonts.ROBOTO = resourceLoader.get(robotoId);
 

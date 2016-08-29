@@ -26,6 +26,7 @@ public final class Resources
         public static Texture TILE_FREE;
         public static Texture TILE_BLOCKED;
         public static Texture ROLLERS_SHEET;
+        public static Texture BLACK_BOX;
     }
 
     public final static class Animations
@@ -67,9 +68,10 @@ public final class Resources
 
     public final static class CollisionTags
     {
-        public static final CollisionTag SHIP   = new CollisionTag();
-        public static final CollisionTag BULLET = new CollisionTag();
-        public static final CollisionTag BLOCK  = new CollisionTag();
-        public static final CollisionTag ROLLER = new CollisionTag();
+        public static final CollisionTag SHIP      = new CollisionTag();
+        public static final CollisionTag BULLET    = new CollisionTag();
+        public static final CollisionTag BLOCK     = new CollisionTag();
+        public static final CollisionTag ROLLER    = new CollisionTag();
+        public static final CollisionTag BLACK_BOX = new CollisionTag();
     }
 }

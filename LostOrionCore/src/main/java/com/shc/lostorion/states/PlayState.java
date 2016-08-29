@@ -27,18 +27,21 @@ public class PlayState extends GameState
     private       SceneCollider2D collider;
 
     public static int SCORE;
+    public static int BOXES;
 
     @Override
     public void onEnter()
     {
         SCENE = new Scene2D();
         SCORE = 0;
+        BOXES = 0;
 
         collider = new SceneCollider2D(new DynamicTree2D());
         collider.setScene(SCENE);
 
         collider.register(Resources.CollisionTags.SHIP, Resources.CollisionTags.BLOCK);
         collider.register(Resources.CollisionTags.SHIP, Resources.CollisionTags.ROLLER);
+        collider.register(Resources.CollisionTags.BLACK_BOX, Resources.CollisionTags.SHIP);
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.BLOCK);
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.ROLLER);
         collider.register(Resources.CollisionTags.ROLLER, Resources.CollisionTags.BLOCK);
@@ -73,6 +76,8 @@ public class PlayState extends GameState
 
             String scoreStr = "SCORE: " + SCORE;
             fontRenderer.render(font, scoreStr, 1280 - font.getWidth(scoreStr) - 10, 10, Color.AQUA_MARINE);
+            scoreStr = "BOXES: " + BOXES;
+            fontRenderer.render(font, "\n" + scoreStr, 1280 - font.getWidth(scoreStr) - 10, 10, Color.AQUA_MARINE);
         }
         fontRenderer.end();
     }

@@ -75,6 +75,8 @@ public class Ship extends Entity2D
     @Override
     protected void onUpdate(float deltaTime)
     {
+        PlayState.GAME_CAMERA.center(position);
+
         if (Keyboard.isKeyTapped(KEY_SPACE))
             PlayState.SCENE.entities.add(new Bullet(position.x, position.y, rotation));
 

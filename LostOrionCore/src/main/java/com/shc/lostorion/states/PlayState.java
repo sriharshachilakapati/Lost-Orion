@@ -19,7 +19,8 @@ public class PlayState extends GameState
 {
     public static SpriteBatch SPRITE_BATCH = new SpriteBatch();
 
-    private OrthoCam camera = new OrthoCam(1280, 720);
+    private static OrthoCam hudCamera   = new OrthoCam(1280, 720);
+    public static  OrthoCam GAME_CAMERA = new OrthoCam(1280, 720);
 
     public static Scene2D         SCENE;
     private       SceneCollider2D collider;
@@ -50,11 +51,11 @@ public class PlayState extends GameState
     @Override
     public void render(float delta)
     {
-        camera.apply();
+        GAME_CAMERA.apply();
         SCENE.render(delta);
-
         SPRITE_BATCH.renderToScreen();
 
+        hudCamera.apply();
         BitmapFontRenderer fontRenderer = Resources.Renderers.FONT;
         BitmapFont font = Resources.Fonts.ROBOTO;
 

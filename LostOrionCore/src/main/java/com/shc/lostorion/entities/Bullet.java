@@ -42,6 +42,12 @@ public class Bullet extends Entity2D
     {
         if (other.entity instanceof Block)
             destroy();
+
+        if (other.entity instanceof Roller)
+        {
+            destroy();
+            PlayState.SCENE.entities.remove(other.entity);
+        }
     }
 
     @Override

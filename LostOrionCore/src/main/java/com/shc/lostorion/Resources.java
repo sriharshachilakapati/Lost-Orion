@@ -67,5 +67,6 @@ public final class Resources
         public static final CollisionTag SHIP   = new CollisionTag();
         public static final CollisionTag BULLET = new CollisionTag();
         public static final CollisionTag BLOCK  = new CollisionTag();
+        public static final CollisionTag ROLLER = new CollisionTag();
     }
 }

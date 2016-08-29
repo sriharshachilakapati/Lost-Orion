@@ -14,6 +14,7 @@ public class Explosion extends Entity2D
     public Explosion(float x, float y)
     {
         position.set(x, y);
+        transformComponent.update(0);
 
         Sprite sprite = new Sprite(Resources.Animations.EXPLOSION);
         sprite.setEndCallback(() -> PlayState.SCENE.entities.remove(this));

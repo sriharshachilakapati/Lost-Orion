@@ -24,12 +24,14 @@ public final class Resources
         public static Texture TILES_SHEET;
         public static Texture TILE_FREE;
         public static Texture TILE_BLOCKED;
+        public static Texture ROLLERS_SHEET;
     }
 
     public final static class Animations
     {
         public static Animation EXPLOSION;
         public static Animation PARTICLES;
+        public static Animation ROLLER;
     }
 
     public final static class Fonts

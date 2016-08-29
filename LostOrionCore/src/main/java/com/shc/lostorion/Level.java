@@ -2,6 +2,7 @@ package com.shc.lostorion;
 
 import com.shc.lostorion.entities.Block;
 import com.shc.lostorion.entities.Floor;
+import com.shc.lostorion.entities.Roller;
 import com.shc.lostorion.entities.Ship;
 import com.shc.lostorion.states.PlayState;
 import com.shc.silenceengine.core.IResource;
@@ -60,6 +61,9 @@ public class Level implements IResource
 
             else if (ch == 'B')
                 scene.entities.add(new Block(x, y));
+
+            else if (ch == 'R')
+                scene.entities.add(new Roller(x, y));
 
             x += tileSize;
         }

@@ -32,6 +32,7 @@ public class LoadingState extends GameState
     private long particlesId;
     private long tilesId;
     private long explosionId;
+    private long rollerId;
 
     private long levelTestId;
 
@@ -53,6 +54,7 @@ public class LoadingState extends GameState
         particlesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/particles-sheet.png"));
         tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
         explosionId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/explosion-sheet.png"));
+        rollerId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/rollers-sheet.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
         levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
         titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
@@ -89,6 +91,7 @@ public class LoadingState extends GameState
             Resources.Textures.PARTICLES_SHEET = resourceLoader.get(particlesId);
             Resources.Textures.TILES_SHEET = resourceLoader.get(tilesId);
             Resources.Textures.EXPLOSION_SHEET = resourceLoader.get(explosionId);
+            Resources.Textures.ROLLERS_SHEET = resourceLoader.get(rollerId);
 
             Resources.Fonts.ROBOTO = resourceLoader.get(robotoId);
 
@@ -110,6 +113,12 @@ public class LoadingState extends GameState
             explosionAnim.addFrame(explosion.getCell(0, 1), 100, TimeUtils.Unit.MILLIS);
             explosionAnim.addFrame(explosion.getCell(1, 0), 100, TimeUtils.Unit.MILLIS);
             explosionAnim.addFrame(explosion.getCell(1, 1), 100, TimeUtils.Unit.MILLIS);
+
+            SpriteSheet rollers = new SpriteSheet(Resources.Textures.ROLLERS_SHEET, 48, 96);
+
+            Animation rollersAnim = Resources.Animations.ROLLER = new Animation();
+            rollersAnim.addFrame(rollers.getCell(0, 0), 100, TimeUtils.Unit.MILLIS);
+            rollersAnim.addFrame(rollers.getCell(0, 1), 100, TimeUtils.Unit.MILLIS);
 
             Resources.Levels.TEST = resourceLoader.get(levelTestId);
 

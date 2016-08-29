@@ -20,6 +20,9 @@ import com.shc.silenceengine.io.FilePath;
 import com.shc.silenceengine.utils.MathUtils;
 import com.shc.silenceengine.utils.TimeUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Sri Harsha Chilakapati
  */
@@ -36,14 +39,14 @@ public class LoadingState extends GameState
     private long logoId;
     private long blackBoxId;
 
-    private long levelTestId;
-
     private long robotoId;
 
     private long titleId;
     private long weirdId;
     private long laserId;
     private long explosionSndId;
+
+    private List<Long> levelIds = new ArrayList<>();
 
     @Override
     public void onEnter()
@@ -62,11 +65,13 @@ public class LoadingState extends GameState
         logoId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/logo.png"));
         blackBoxId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/black-box.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
-        levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
         titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
         weirdId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/keeps_getting_weirder.ogg"));
         laserId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/effects/laser_pew.ogg"));
         explosionSndId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/effects/explode_long.ogg"));
+
+        for (int i = 1; i <= 5; i++)
+            levelIds.add(resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Level" + i + ".lvl")));
 
         DynamicProgram.create(dynamicProgram ->
         {
@@ -130,7 +135,8 @@ public class LoadingState extends GameState
             rollersAnim.addFrame(rollers.getCell(0, 0), 100, TimeUtils.Unit.MILLIS);
             rollersAnim.addFrame(rollers.getCell(0, 1), 100, TimeUtils.Unit.MILLIS);
 
-            Resources.Levels.TEST = resourceLoader.get(levelTestId);
+            for (long id : levelIds)
+                Resources.LEVELS.add(resourceLoader.get(id));
 
             Resources.Sounds.TITLE = resourceLoader.get(titleId);
             Resources.Sounds.WEIRD = resourceLoader.get(weirdId);

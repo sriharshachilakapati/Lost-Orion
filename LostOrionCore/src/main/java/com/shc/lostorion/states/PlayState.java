@@ -29,9 +29,13 @@ public class PlayState extends GameState
     public static int SCORE = 0;
     public static int BOXES = 0;
 
+    public static int CURRENT_LEVEL = -1;
+
     @Override
     public void onEnter()
     {
+        CURRENT_LEVEL++;
+
         SCENE = new Scene2D();
 
         collider = new SceneCollider2D(new DynamicTree2D());
@@ -44,7 +48,7 @@ public class PlayState extends GameState
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.ROLLER);
         collider.register(Resources.CollisionTags.ROLLER, Resources.CollisionTags.BLOCK);
 
-        Resources.Levels.TEST.create();
+        Resources.LEVELS.get(CURRENT_LEVEL).create();
     }
 
     @Override

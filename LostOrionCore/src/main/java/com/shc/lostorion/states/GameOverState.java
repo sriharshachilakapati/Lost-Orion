@@ -40,6 +40,41 @@ public class GameOverState extends GameState
     {
         camera.apply();
 
+        Resources.Programs.DYNAMIC.use();
+        DynamicRenderer dynamicRenderer = Resources.Renderers.DYNAMIC;
+        Resources.Textures.LOGO.bind();
+        dynamicRenderer.begin(Primitive.TRIANGLE_FAN);
+        {
+            dynamicRenderer.vertex(0, 0);
+            dynamicRenderer.texCoord(0, 0);
+
+            dynamicRenderer.vertex(1280, 0);
+            dynamicRenderer.texCoord(1, 0);
+
+            dynamicRenderer.vertex(1280, 720);
+            dynamicRenderer.texCoord(1, 1);
+
+            dynamicRenderer.vertex(0, 720);
+            dynamicRenderer.texCoord(0, 1);
+        }
+        dynamicRenderer.end();
+
+        dynamicRenderer.begin(Primitive.TRIANGLE_FAN);
+        {
+            dynamicRenderer.vertex(750, 0);
+            dynamicRenderer.color(0, 0, 0, 0.95f);
+
+            dynamicRenderer.vertex(1280, 0);
+            dynamicRenderer.color(0, 0, 0, 0.95f);
+
+            dynamicRenderer.vertex(1280, 720);
+            dynamicRenderer.color(0, 0, 0, 0.95f);
+
+            dynamicRenderer.vertex(750, 720);
+            dynamicRenderer.color(0, 0, 0, 0.95f);
+        }
+        dynamicRenderer.end();
+
         BitmapFontRenderer renderer = Resources.Renderers.FONT;
         BitmapFont font = Resources.Fonts.ROBOTO;
 
@@ -58,28 +93,9 @@ public class GameOverState extends GameState
                           + "Made with SilenceEngine 1.0.1\n\n\n\n\n\n"
                           + "PRESS SPACE TO PLAY AGAIN";
 
-            renderer.render(font, text, 10, 10);
+            renderer.render(font, text, 775, 10);
         }
         renderer.end();
-
-        Resources.Programs.DYNAMIC.use();
-        DynamicRenderer dynamicRenderer = Resources.Renderers.DYNAMIC;
-        Resources.Textures.LOGO.bind();
-        dynamicRenderer.begin(Primitive.TRIANGLE_FAN);
-        {
-            dynamicRenderer.vertex(500, 10);
-            dynamicRenderer.texCoord(0, 0);
-
-            dynamicRenderer.vertex(1270, 10);
-            dynamicRenderer.texCoord(1, 0);
-
-            dynamicRenderer.vertex(1270, 710);
-            dynamicRenderer.texCoord(1, 1);
-
-            dynamicRenderer.vertex(500, 710);
-            dynamicRenderer.texCoord(0, 1);
-        }
-        dynamicRenderer.end();
     }
 
     @Override
@@ -87,5 +103,6 @@ public class GameOverState extends GameState
     {
         PlayState.SCORE = 0;
         PlayState.BOXES = 0;
+        PlayState.CURRENT_LEVEL = -1;
     }
 }

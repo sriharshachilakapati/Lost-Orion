@@ -10,6 +10,9 @@ import com.shc.silenceengine.graphics.fonts.BitmapFontRenderer;
 import com.shc.silenceengine.graphics.opengl.Texture;
 import com.shc.silenceengine.graphics.programs.DynamicProgram;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Sri Harsha Chilakapati
  */
@@ -61,10 +64,7 @@ public final class Resources
         public static SpriteRenderer     SPRITE;
     }
 
-    public final static class Levels
-    {
-        public static Level TEST;
-    }
+    public final static List<Level> LEVELS = new ArrayList<>();
 
     public final static class CollisionTags
     {

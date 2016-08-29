@@ -34,6 +34,7 @@ public class PlayState extends GameState
         collider.setScene(SCENE);
 
         collider.register(Resources.CollisionTags.SHIP, Resources.CollisionTags.BLOCK);
+        collider.register(Resources.CollisionTags.SHIP, Resources.CollisionTags.ROLLER);
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.BLOCK);
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.ROLLER);
         collider.register(Resources.CollisionTags.ROLLER, Resources.CollisionTags.BLOCK);

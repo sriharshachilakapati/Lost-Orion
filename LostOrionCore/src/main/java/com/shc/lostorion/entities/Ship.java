@@ -1,6 +1,7 @@
 package com.shc.lostorion.entities;
 
 import com.shc.lostorion.BatchComponent;
+import com.shc.lostorion.LostOrion;
 import com.shc.lostorion.Resources;
 import com.shc.lostorion.states.PlayState;
 import com.shc.silenceengine.graphics.Sprite;
@@ -74,6 +75,8 @@ public class Ship extends Entity2D
                     position.x -= iWidth;
             }
         }
+        else if (other.entity instanceof Roller)
+            LostOrion.INSTANCE.setGameState(new PlayState());
     }
 
     @Override

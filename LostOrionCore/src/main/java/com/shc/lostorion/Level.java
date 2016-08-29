@@ -3,6 +3,7 @@ package com.shc.lostorion;
 import com.shc.lostorion.entities.Block;
 import com.shc.lostorion.entities.Floor;
 import com.shc.lostorion.entities.Ship;
+import com.shc.lostorion.states.PlayState;
 import com.shc.silenceengine.core.IResource;
 import com.shc.silenceengine.core.ResourceLoader;
 import com.shc.silenceengine.core.SilenceEngine;
@@ -21,8 +22,11 @@ public class Level implements IResource
         this.levelText = levelText;
     }
 
-    public void create(Scene2D scene)
+    public void create()
     {
+        Scene2D scene = PlayState.SCENE;
+        scene.entities.clear();
+
         final float tileSize = 96;
         float x = tileSize / 2, y = tileSize / 2;
 

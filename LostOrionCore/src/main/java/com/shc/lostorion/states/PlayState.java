@@ -21,20 +21,21 @@ public class PlayState extends GameState
 
     private OrthoCam camera = new OrthoCam(1280, 720);
 
-    private Scene2D         scene;
-    private SceneCollider2D collider;
+    public static Scene2D         SCENE;
+    private       SceneCollider2D collider;
 
     @Override
     public void onEnter()
     {
-        scene = new Scene2D();
+        SCENE = new Scene2D();
 
         collider = new SceneCollider2D(new DynamicTree2D());
-        collider.setScene(scene);
+        collider.setScene(SCENE);
 
         collider.register(Resources.CollisionTags.SHIP, Resources.CollisionTags.BLOCK);
+        collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.BLOCK);
 
-        Resources.Levels.TEST.create(scene);
+        Resources.Levels.TEST.create();
     }
 
     @Override
@@ -42,7 +43,7 @@ public class PlayState extends GameState
     {
         SilenceEngine.display.setTitle("LostOrion | RC: " + IGraphicsDevice.Data.renderCallsThisFrame);
 
-        scene.update(delta);
+        SCENE.update(delta);
         collider.checkCollisions();
     }
 
@@ -50,7 +51,7 @@ public class PlayState extends GameState
     public void render(float delta)
     {
         camera.apply();
-        scene.render(delta);
+        SCENE.render(delta);
 
         SPRITE_BATCH.renderToScreen();
 

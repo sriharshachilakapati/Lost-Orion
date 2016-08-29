@@ -2,6 +2,7 @@ package com.shc.lostorion.entities;
 
 import com.shc.lostorion.BatchComponent;
 import com.shc.lostorion.Resources;
+import com.shc.lostorion.states.PlayState;
 import com.shc.silenceengine.graphics.Sprite;
 import com.shc.silenceengine.input.Keyboard;
 import com.shc.silenceengine.math.Vector2;
@@ -74,6 +75,9 @@ public class Ship extends Entity2D
     @Override
     protected void onUpdate(float deltaTime)
     {
+        if (Keyboard.isKeyTapped(KEY_SPACE))
+            PlayState.SCENE.entities.add(new Bullet(position.x, position.y, rotation));
+
         if (Keyboard.isKeyDown(KEY_RIGHT))
             rotation += 90 * deltaTime;
 

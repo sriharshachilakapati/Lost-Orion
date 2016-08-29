@@ -31,6 +31,7 @@ public class LoadingState extends GameState
     private long shipId;
     private long particlesId;
     private long tilesId;
+    private long explosionId;
 
     private long levelTestId;
 
@@ -51,6 +52,7 @@ public class LoadingState extends GameState
         shipId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/ship.png"));
         particlesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/particles-sheet.png"));
         tilesId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/tiles-sheet.png"));
+        explosionId = resourceLoader.define(Texture.class, FilePath.getResourceFile("textures/explosion-sheet.png"));
         robotoId = resourceLoader.define(BitmapFont.class, FilePath.getResourceFile("engine_resources/fonts/roboto32px.fnt"));
         levelTestId = resourceLoader.define(Level.class, FilePath.getResourceFile("levels/Test.lvl"));
         titleId = resourceLoader.define(Sound.class, FilePath.getResourceFile("sounds/music/title.ogg"));
@@ -86,6 +88,7 @@ public class LoadingState extends GameState
             Resources.Textures.SHIP = resourceLoader.get(shipId);
             Resources.Textures.PARTICLES_SHEET = resourceLoader.get(particlesId);
             Resources.Textures.TILES_SHEET = resourceLoader.get(tilesId);
+            Resources.Textures.EXPLOSION_SHEET = resourceLoader.get(explosionId);
 
             Resources.Fonts.ROBOTO = resourceLoader.get(robotoId);
 
@@ -99,6 +102,14 @@ public class LoadingState extends GameState
             SpriteSheet tiles = new SpriteSheet(Resources.Textures.TILES_SHEET, 96, 96);
             Resources.Textures.TILE_FREE = tiles.getCell(0, 0);
             Resources.Textures.TILE_BLOCKED = tiles.getCell(0, 1);
+
+            SpriteSheet explosion = new SpriteSheet(Resources.Textures.EXPLOSION_SHEET, 32, 32);
+
+            Animation explosionAnim = Resources.Animations.EXPLOSION = new Animation();
+            explosionAnim.addFrame(explosion.getCell(0, 0), 100, TimeUtils.Unit.MILLIS);
+            explosionAnim.addFrame(explosion.getCell(0, 1), 100, TimeUtils.Unit.MILLIS);
+            explosionAnim.addFrame(explosion.getCell(1, 0), 100, TimeUtils.Unit.MILLIS);
+            explosionAnim.addFrame(explosion.getCell(1, 1), 100, TimeUtils.Unit.MILLIS);
 
             Resources.Levels.TEST = resourceLoader.get(levelTestId);
 

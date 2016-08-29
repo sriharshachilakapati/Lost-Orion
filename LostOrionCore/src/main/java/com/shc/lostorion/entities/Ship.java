@@ -17,11 +17,15 @@ import static com.shc.silenceengine.input.Keyboard.*;
  */
 public class Ship extends Entity2D
 {
+    public static Ship INSTANCE;
+
     private Vector2 speed = new Vector2();
     private CollisionComponent2D collision;
 
     public Ship(float x, float y)
     {
+        INSTANCE = this;
+
         position.set(x, y);
         speed.set(0, 0);
 

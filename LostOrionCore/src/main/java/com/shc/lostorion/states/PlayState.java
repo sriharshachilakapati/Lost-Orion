@@ -1,5 +1,6 @@
 package com.shc.lostorion.states;
 
+import com.shc.lostorion.LostOrion;
 import com.shc.lostorion.Resources;
 import com.shc.lostorion.SpriteBatch;
 import com.shc.silenceengine.collision.broadphase.DynamicTree2D;
@@ -47,6 +48,12 @@ public class PlayState extends GameState
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.BLOCK);
         collider.register(Resources.CollisionTags.BULLET, Resources.CollisionTags.ROLLER);
         collider.register(Resources.CollisionTags.ROLLER, Resources.CollisionTags.BLOCK);
+
+        if (CURRENT_LEVEL >= Resources.LEVELS.size())
+        {
+            LostOrion.INSTANCE.setGameState(new GameOverState());
+            return;
+        }
 
         Resources.LEVELS.get(CURRENT_LEVEL).create();
     }

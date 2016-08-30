@@ -18,7 +18,7 @@ public class LostOrion extends Game
     static
     {
         // Use development mode to catch GL and AL errors all the time
-        DEVELOPMENT = true;
+        DEVELOPMENT = false;
     }
 
     @Override
